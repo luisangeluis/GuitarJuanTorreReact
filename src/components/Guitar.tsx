@@ -1,4 +1,9 @@
-const Guitar = ({ guitar,addToCart }) => {
+interface GuitarProps {
+  guitar: Guitar;
+  addToCart: (item: Guitar) => void;
+}
+
+const Guitar = ({ guitar, addToCart }: GuitarProps) => {
   return (
     <div className="col-md-6 col-lg-4 my-4 row align-items-center">
       <div className="col-4">
@@ -17,10 +22,10 @@ const Guitar = ({ guitar,addToCart }) => {
         <button
           type="button"
           className="btn btn-dark w-100"
-          onClick={()=>{
+          onClick={() => {
             console.log("click");
-            
-            addToCart(guitar)
+
+            addToCart(guitar);
           }}
         >
           Agregar al Carrito

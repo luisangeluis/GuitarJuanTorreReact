@@ -14,6 +14,8 @@ export default function App() {
     incrementQuantity,
     decrementQuantity,
     cleanCart,
+    isEmpty,
+    cartToTal
   } = useCart();
 
   return (
@@ -24,6 +26,8 @@ export default function App() {
         incrementQuantity={incrementQuantity}
         decrementQuantity={decrementQuantity}
         cleanCart={cleanCart}
+        isEmpty = {isEmpty}
+        cartToTal = {cartToTal}
       />
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

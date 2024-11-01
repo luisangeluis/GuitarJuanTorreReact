@@ -12,7 +12,7 @@ const useCart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (item) => {
+  const addToCart = (item:Guitar) => {
     const itemId = cart.findIndex((i) => i.id === item.id);
 
     if (itemId >= 0) {
@@ -64,6 +64,9 @@ const useCart = () => {
     if (cart.length) setCart([]);
   };
 
+  const isEmpty = () => cart.length === 0;
+  const cartToTal =()=> cart.reduce((accum:any,current:any)=>accum+(current.quantity*current.price),0)
+
   return {
     cart,
     addToCart,
@@ -71,6 +74,8 @@ const useCart = () => {
     incrementQuantity,
     decrementQuantity,
     cleanCart,
+    isEmpty,
+    cartToTal
   };
 };
 

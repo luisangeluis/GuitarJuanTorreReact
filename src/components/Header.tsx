@@ -1,7 +1,12 @@
-const Header = ({ cart,deleteFromCart,incrementQuantity,decrementQuantity,cleanCart }) => {
-  const isEmpty = () => cart.length === 0;
-  const cartToTal =()=> cart.reduce((accum:any,current:any)=>accum+(current.quantity*current.price),0)
-
+const Header = ({
+  cart,
+  deleteFromCart,
+  incrementQuantity,
+  decrementQuantity,
+  cleanCart,
+  isEmpty,
+  cartToTal,
+}) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -50,16 +55,28 @@ const Header = ({ cart,deleteFromCart,incrementQuantity,decrementQuantity,cleanC
                           <td>{e.name}</td>
                           <td className="fw-bold">${e.price}</td>
                           <td className="flex align-items-start gap-4">
-                            <button type="button" className="btn btn-dark" onClick={()=>decrementQuantity(e.id)}>
+                            <button
+                              type="button"
+                              className="btn btn-dark"
+                              onClick={() => decrementQuantity(e.id)}
+                            >
                               -
                             </button>
                             {e.quantity}
-                            <button type="button" className="btn btn-dark" onClick={()=>incrementQuantity(e.id)}>
+                            <button
+                              type="button"
+                              className="btn btn-dark"
+                              onClick={() => incrementQuantity(e.id)}
+                            >
                               +
                             </button>
                           </td>
                           <td>
-                            <button className="btn btn-danger" type="button" onClick={()=>deleteFromCart(e.id)}>
+                            <button
+                              className="btn btn-danger"
+                              type="button"
+                              onClick={() => deleteFromCart(e.id)}
+                            >
                               X
                             </button>
                           </td>
@@ -72,7 +89,10 @@ const Header = ({ cart,deleteFromCart,incrementQuantity,decrementQuantity,cleanC
                 <p className="text-end">
                   Total pagar: <span className="fw-bold">${cartToTal()}</span>
                 </p>
-                <button className="btn btn-dark w-100 mt-3 p-2" onClick={cleanCart}>
+                <button
+                  className="btn btn-dark w-100 mt-3 p-2"
+                  onClick={cleanCart}
+                >
                   Vaciar Carrito
                 </button>
               </div>
