@@ -5,3 +5,7 @@ interface Guitar {
     description: string;
     price: number;
   }
+
+  interface CartItem extends Guitar{
+    quantity:number;
+  } 

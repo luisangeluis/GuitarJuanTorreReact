@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../utils/db";
 
 const useCart = () => {
-  const initialCart = () => {
+  const initialCart = ():CartItem[] => {
     const localStorageCart = localStorage.getItem("cart");
     return localStorageCart ? JSON.parse(localStorageCart) : [];
   };
@@ -23,18 +23,18 @@ const useCart = () => {
         setCart(updatedCart);
       }
     } else {
-      item.quantity = 1;
-      setCart([...cart, item]);
+      const newItem : CartItem = {...item,quantity:1}
+      setCart([...cart, newItem]);
     }
   };
 
-  const deleteFromCart = (itemId) => {
+  const deleteFromCart = (itemId:CartItem["id"]) => {
     const updatedCart = cart.filter((item) => item.id !== itemId);
 
     setCart(updatedCart);
   };
 
-  const incrementQuantity = (itemId: number) => {
+  const incrementQuantity = (itemId: CartItem["id"]) => {
     const index = cart.findIndex((item) => item.id === itemId);
 
     if (index >= 0) {
@@ -47,7 +47,7 @@ const useCart = () => {
     }
   };
 
-  const decrementQuantity = (itemId: number) => {
+  const decrementQuantity = (itemId: CartItem["id"]) => {
     const index = cart.findIndex((item) => item.id === itemId);
 
     if (index >= 0) {

@@ -1,3 +1,12 @@
+interface HeaderProps{
+  cart:CartItem[];
+  deleteFromCart:(id:CartItem["id"])=>void
+  incrementQuantity:(id:CartItem["id"])=>void;
+  decrementQuantity:(id:CartItem["id"])=>void;
+  cleanCart:()=>void;
+  isEmpty:()=>boolean;
+  cartToTal:()=>number;
+}
 const Header = ({
   cart,
   deleteFromCart,
@@ -6,7 +15,7 @@ const Header = ({
   cleanCart,
   isEmpty,
   cartToTal,
-}) => {
+}:HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
